@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Personas</title>
+    <!-- Estilos de Materialize -->
+    <link rel="stylesheet" href="/assets/lib/node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/lib/node_modules/material-icons/iconfont/material-icons.css">
+
+    <!--SweetAlert2-->
+    <link rel="stylesheet" href="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.css">
+
+    <!-- Estilos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Estilos de DataTables y DataTables Buttons -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css">
+    <!-- Tu estilo personalizado -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="row datatable">
+        <div id="admin" class="col s12">
+            <div class="card material-table center-table">
+                <div class="table-header">
+                    <div class="table-title-and-button">
+                        <span class="table-title">Registro De Personas</span>
+                        <a href="#" id="export-pdf-button" class="btn btn-danger red darken-1 custom-pdf-button">
+                            <i class="fas fa-file-pdf"></i> Exportar a PDF
+                        </a>
+                        <a href="#" class="btn btn-info blue lighten-1 imprimir">
+                            <i class="fa fa-print"></i> Imprimir
+                        </a>
+                    </div>
+                    <div class="actions">
+                        <!-- Agrega el atributo 'data-bs-toggle' y 'data-bs-target' para activar el modal -->
+                        <a class="btn modal-trigger nuevo-registro" href="#modal">
+                            Insertar Nuevo Registro
+                            <i class="material-icons right fa-solid fa-plus fa-beat fa-2xs"></i>
+                        </a>
+                        <a href="#" class="search-toggle btn-flat nopadding"><i class="material-icons">search</i></a>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="datatable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>T.Documento</th>
+                                <th>Documento</th>
+                                <th>Edad</th>
+                                <th>Genero</th>
+                                <th>Correo</th>
+                                <th># RFID</th>
+                                <th>Télefono</th>
+                                <th>Dirección</th>
+                                <th>Estado</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td colspan="13" id="datetime-footer"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal modal-fixed-footer modal-custom" style="width: 90%; height: 500px;">
+        <div class="modal-content modal-border">
+            <!-- Encabezado del modal -->
+            <div class="modal-header">
+                <h5 class="modal-title">Registro Persona <i class="fa-solid fa-users-rays"></i> <!-- Icono de FontAwesome --></h5>
+
+            </div>
+            <!-- Línea separadora -->
+            <div class="divider"></div>
+            <div class="modal-body">
+                <!-- Contenido del modal en dos columnas -->
+
+                <form class="home-form">
+                    <div class="row">
+                        <!-- Columna izquierda -->
+                        <input type="hidden" name="" id="id">
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input type="text" id="firstName" name="firstName" required
+                                    placeholder="Ingrese Su Primer Nombre" autocomplete="given-name" class="validate" />
+                                <label for="firstName">Primer Nombre</label>
+                            </div>
+
+                            <div class="input-field">
+                                <input type="text" id="firstLastName" name="firstLastName" required
+                                    placeholder="Ingrese Su Primer Apellido" autocomplete="family-name"
+                                    class="validate" />
+                                <label for="firstLastName">Primer Apellido</label>
+                            </div>
+
+                            <label for="documentType">Tipo de Documento</label>
+                            <div class="input-field">
+                                <select id="documentType" name="documentType" class="browser-default">
+                                    <option value="" selected>Selecciona el Tipo de Documento</option>
+                                    <option value="CE">CE</option>
+                                    <option value="CC">CC</option>
+                                    <option value="TI">TI</option>
+                                    <option value="PP">PP</option>
+                                    <option value="DNI">DNI</option>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="document" name="document" required
+                                    placeholder="Digite Su Número De Documento" autocomplete="on" class="validate" />
+                                <label for="document">Número de Documento</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="number" id="age" name="age" min="0" required placeholder="age"
+                                    autocomplete="off" class="validate" />
+                                <label for="age">Edad</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="tel" id="phoneNumber" name="phoneNumber" required maxlength="10"
+                                    minlength="10" placeholder="Digite Su Número De Celular" autocomplete="tel"
+                                    class="validate" />
+                                <label for="phoneNumber">Número de Celular</label>
+                            </div>
+                        </div>
+                        <!-- Columna derecha -->
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input type="text" id="secondName" name="secondName"
+                                    placeholder="Ingrese Su Segundo Nombre" autocomplete="given-name"
+                                    class="validate" />
+                                <label for="secondName">Segundo Nombre</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="secondLastName" name="secondLastName"
+                                    placeholder="Ingrese Su Segundo Apellido" autocomplete="family-name"
+                                    class="validate" />
+                                <label for="secondLastName">Segundo Apellido</label>
+                            </div>
+                            <label for="genero">Género</label>
+                            <div class="input-field">
+                                <select id="gender" name="gender" class="browser-default">
+                                    <option value="" disabled selected>Selecciona el Género</option>
+                                    <option value="1">Masculino</option>
+                                    <option value="0">Femenino</option>
+                                </select>
+                            </div>                            
+                            <div class="input-field">
+                                <input type="text" id="mail" name="mail" placeholder="Digite El Correo"
+                                    autocomplete="off" class="validate" />
+                                <label for="mail">Correo</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="rfid" name="rfid" placeholder="Digite El Número de RFID Asignado"
+                                    autocomplete="off" class="validate" />
+                                <label for="rfid">Número de RFID</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="address" name="address" required
+                                    placeholder="Ingrese Su Dirección De Residencia" autocomplete="street-address"
+                                    class="validate" />
+                                <label for="address">Dirección</label>
+                            </div>
+                            <div class="input-field">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" id="state" />
+                                        <span>Estado</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-close" onclick="clearData()"
+                style="background-color: #fff; color: black;">Cerrar</button>
+            <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" onclick="Add()"
+                style="background-color: #364e7c;"> <i class="fa-regular fa-floppy-disk"></i> Guardar
+                Cambios</button>
+
+        </div>
+    </div>
+
+    <!-- Scripts de jQuery y DataTables -->
+    <script src="/assets/lib/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <!--SweetAlert2-->
+    <script src="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <!-- Scripts de DataTables Buttons -->
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/assets/lib/node_modules/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/assets/lib/node_modules/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.print.min.js"></script>
+
+    <!-- Scripts de Materialize -->
+    <script src="/assets/lib/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <!-- Tu script personalizado -->
+    <script src="../../js/comprobarSesion.js"></script>
+    <script src="/js/seguridad/registroPersona.js"></script>
+    <!-- Inicializa el modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+    </script>
+
+</body>
+
+</html>
+

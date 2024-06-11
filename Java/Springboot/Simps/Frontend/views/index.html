@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión S.I.M.P</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <!--SweetAlert2-->
+    <link rel="stylesheet" href="../assets/lib/node_modules/sweetalert2/dist/sweetalert2.css">
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="contenedor__todo">
+            <div class="caja__trasera">
+
+                <div class="caja__trasera-login">
+                    <h3>¿Ya tienes una cuenta?</h3>
+                    <p>Inicia sesión para ingresar a la página</p>
+                    <button id="btn__iniciar_sesion">Iniciar sesión</button>
+
+                </div>
+                <div class="caja__trasera-email">
+                    <h3>¿Aún no tienes una cuenta?</h3>
+                    <p>Solicita una cuenta con los siguientes datos</p>
+                    <button id="btn__email">Contestar</button>
+                </div>
+
+            </div>
+            <div class="contenedor__login-email">
+                <div class="formulario__login">
+                    <img src="../assets/img/index/iniciar_sesion_final.png">
+                    <h2>Iniciar sesión</h2>
+                    <input type="text" placeholder="Usuario" name="usuario" id="txtuser">
+                    <input type="password" placeholder="Contraseña" name="contrasena" id="txtpassword">
+                    <button onclick="login()">Entrar</button>
+                </div>
+                <div class="formulario__email">
+                    <h2>Formulario</h2>
+                    <input type="text" placeholder="Nombre Completo" name="name" id="name" required autocomplete="off">
+                    <input type="number" placeholder="Documento" name="documento" id="document" required
+                        autocomplete="off">
+                    <input type="text" placeholder="Colegio" name="colegio" id="school" required autocomplete="off">
+                    <input type="text" placeholder="Curso" name="curso" id="curse" required autocomplete="off">
+                    <input type="email" placeholder="Correo electronico" name="correo" id="mail" required
+                        autocomplete="off">
+                    <input type="text" placeholder="Mensaje corto extra" name="correo" id="message" autocomplete="off">
+                    <button onclick="solicitarCuenta()">Enviar formulario</button>
+                </div>
+            </div>
+        </div>
+        <div class="image">
+            <img src="../assets/img/index/logoSimpsVectorizado.svg" alt="" x="240" y="20" width="250" height="250">
+        </div>
+    </main>
+    <script src="../assets/lib/node_modules/jquery/dist/jquery.js"></script>
+    <script src="../assets/lib/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

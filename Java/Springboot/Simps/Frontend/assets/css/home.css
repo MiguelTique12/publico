@@ -1,0 +1,360 @@
+@-webkit-keyframes slidein {
+    0% {
+      top: -400px;
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      top: 0px;
+    }
+  }
+  @keyframes slidein {
+    0% {
+      top: -400px;
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      top: 0px;
+    }
+  }
+  @-webkit-keyframes slideout {
+    0% {
+      top: 0;
+      opacity: 1;
+    }
+    100% {
+      top: -400px;
+      opacity: 0;
+    }
+  }
+  @keyframes slideout {
+    0% {
+      top: 0;
+      opacity: 1;
+    }
+    100% {
+      top: -400px;
+      opacity: 0;
+    }
+  }
+  body {
+    background: #ffffff;
+    font-family: "Tahoma";
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  body #scene {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 1000px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 50px rgba(14, 58, 252, 0.5); /* Cambia los valores según tu preferencia */
+    overflow: hidden;
+  }
+  body #scene #left-zone {
+    background: #fff;
+    height: 75%;
+    flex-grow: 0;
+    display: flex;
+    width: 350px;
+    align-items: center;
+    justify-content: left;
+  }
+  body #scene #left-zone .list {
+    display: flex;
+    list-style: none;
+    align-content: stretch;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+  }
+  body #scene #left-zone .list li.item input[type=radio] {
+    display: none;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ label {
+    display: block;
+    opacity: 0.5;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ label:first-letter {
+    text-transform: uppercase;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ label:hover {
+    opacity: 0.75;
+    cursor: pointer;
+    color:thistle;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ label.label_simp:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    background-image: url("../img/dashboard/logoSimpsVectorizado.svg");
+    background-position: center;
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ label.label_atanasio:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    background-image: url("../img/escudo.png");
+    background-position: center;
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ label.label_modulo:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    background-image: url("../img/home/modular.png");
+    background-position: center;
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ label.label_asistencia:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    background-image: url("../img/home/asistencia.svg");
+    background-position: center;
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ label.label_justificacion:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    background-image: url("../img/home/justificacion.svg");
+    background-position: center;
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+  }
+  
+  body #scene #left-zone .list li.item input[type=radio] ~ label.label_inventario:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    background-image: url("../img/home/inventario.png");
+    background-position: center;
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+  }
+  
+  body #scene #left-zone .list li.item input[type=radio] ~ .content {
+    position: absolute;
+    left: 350px;
+    top: -400px;
+    width: 650px;
+    height: 400px;
+    -webkit-animation-duration: 0.75s;
+            animation-duration: 0.75s;
+    -webkit-animation-name: slideout;
+            animation-name: slideout;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_simp .picto {
+    height: 160px;
+    width: 160px;
+    background-image: url("../img/dashboard/logoSimpsVectorizado.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_simp h1 {
+    color: #D64541;
+  }
+  
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_atanasio h1 {
+    color: #F5D76E;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_modulo .picto {
+    height: 230px;
+    width: 380px;
+    background-image: url("../img/home/sistema_modular.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Cambia los valores según tu preferencia */
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_modulo h1 {
+    color: #00B16A;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_asistencia .picto {
+    height: 230px;
+    width: 380px;
+    background-image: url("../img/home/marcar_asistencia.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Cambia los valores según tu preferencia */
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_asistencia h1 {
+    color: #F27935;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_justificacion .picto {
+    height: 230px;
+    width: 380px;
+    background-image: url("../img/home/anexar_justificacion.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Cambia los valores según tu preferencia */
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_justificacion h1 {
+    color: #2143da;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_inventario .picto {
+    height: 230px;
+    width: 380px;
+    background-image: url("../img/home/realizar_inventario.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Cambia los valores según tu preferencia */
+  }
+  
+  body #scene #left-zone .list li.item input[type=radio] ~ .content.content_inventario h1 {
+    color: #4ff8f0;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content h1:first-letter {
+    text-transform: uppercase;
+  }
+  body #scene #left-zone .list li.item input[type=radio] ~ .content p {
+    max-width: 80%;
+    text-align: justify;
+    font-size: 85%;
+  }
+  body #scene #left-zone .list li.item input[type=radio]:checked ~ label {
+    opacity: 1;
+    -webkit-animation: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            animation: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+  body #scene #left-zone .list li.item input[type=radio]:checked ~ label.label_simp {
+    color: #D64541;
+    border-right: solid 4px #D64541;
+  }
+  body #scene #left-zone .list li.item input[type=radio]:checked ~ label.label_atanasio {
+    color: #F5D76E;
+    border-right: solid 4px #F5D76E;
+  }
+  body #scene #left-zone .list li.item input[type=radio]:checked ~ label.label_modulo {
+    color: #00B16A;
+    border-right: solid 4px #00B16A;
+  }
+  body #scene #left-zone .list li.item input[type=radio]:checked ~ label.label_asistencia {
+    color: #F27935;
+    border-right: solid 4px #F27935;
+  }
+  body #scene #left-zone .list li.item input[type=radio]:checked ~ label.label_justificacion {
+    color: #2143da;
+    border-right: solid 4px #2143da;
+  }
+  body #scene #left-zone .list li.item input[type=radio]:checked ~ label.label_inventario {
+    color: #4ff8f0;
+    border-right: solid 4px #4ff8f0;
+  }
+  body #scene #left-zone .list li.item input[type=radio]:checked ~ .content {
+    -webkit-animation-duration: 0.75s;
+            animation-duration: 0.75s;
+    -webkit-animation-name: slidein;
+            animation-name: slidein;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+  body #scene #middle-border {
+    background-color: #eee;
+    height: 75%;
+    flex-grow: 1;
+    max-width: 2px;
+    z-index: 0;
+  }
+  body #scene #right-zone {
+    background: #fff;
+    height: 100%;
+    flex-grow: 3;
+  }
+  
+  .carousel-inner img {
+    display: block; /* Eliminar espacio en blanco debajo de las imágenes */
+    margin: 0 auto;
+  }
+  
+  /* Cambiar el color de fondo y el color de las flechas de los controles */
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5); /* Cambia el color de fondo */
+    color: white; /* Cambia el color de las flechas */
+  }
+  
+  /* Cambiar el color de fondo de los indicadores */
+  .carousel-indicators li {
+    background-color: #ff0000; /* Cambia el color de fondo de los indicadores */
+  }
+  
+  /* Cambiar el color de los indicadores activos */
+  .carousel-indicators .active {
+    background-color: #000000; /* Cambia el color del indicador activo */
+  }
+  
+  /* Establecer un tamaño fijo para el carrusel */
+  /* Agregar una sombra al contorno del carrusel */
+  #carouselExampleIndicators {
+    width: 400px; /* Ancho deseado del carrusel */
+    height: 160px; /* Altura deseada del carrusel */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Cambia los valores según tu preferencia */
+  }
+  
+  /* Establecer un tamaño fijo para las imágenes dentro del carrusel */
+  .carousel-inner img {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .content.content_atanasio, .content.content_modulo, .content.content_asistencia, 
+  .content.content_justificacion, .content.content_inventario {
+    margin-top: 1.5%;
+  }
+  
+  

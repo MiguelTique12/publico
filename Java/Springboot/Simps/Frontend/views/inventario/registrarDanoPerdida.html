@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Movimiento</title>
+    <link rel="stylesheet" href="../../assets/lib/node_modules/boxicons/css/boxicons.min.css">
+    <!--SweetAlert2-->
+    <link rel="stylesheet" href="../../assets/lib/node_modules/sweetalert2/dist/sweetalert2.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="../../assets/css/inventario/realizarInventario.css">
+    <link rel="stylesheet" href="../../assets/lib/node_modules/maxcdn_boostrappcdn_bootstrap3/maxcdn.bootstrapcdn.com_bootstrap_3.3.5_css_bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/lib/node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="row datatable">
+        <div id="admin" class="col s12">
+            <div class="card material-table center-table">
+                <div class="table-header">
+                    <label for="classroomId" class="bold-label">Salón para realizar inventario</label>
+                    <div class="table-header">
+                        <div class="input-field">
+
+                            <select id="classroomId" name="module" class="browser-default"
+                                onchange="cargarInventario();">
+                                <option value="">18282</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn modal-trigger nuevo-registro" onclick="guardarDanoPerdida()">
+                            Registrar Daño pérdida
+                            <i class='bx bx-save' style="color: white; font-size: 20px;"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="table centered centered-table" id="datatable">
+                        <thead>
+                            <tr>
+                                <th style="font-weight: bold;">#</th>
+                                <th style="font-weight: bold;">Imagen</th>
+                                <th style="font-weight: bold;">Producto</th>
+                                <th style="font-weight: bold;">Marca</th>
+                                <th style="font-weight: bold;">Tipo de elemento</th>
+                                <td style="background-color: rgb(79, 137, 156); font-size: 17px;">Ingrese la cantidad
+                                    &#10549;&#65039;</td>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-body">
+                            <!-- Aquí se agregarán los datos de la tabla -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <a class="btn modal-trigger nuevo-registro" href="#modal"
+                                        style="max-width: 25%; margin: 0 auto; background-color: #4e6da5;">
+                                        Agregar unos datos adicionales
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                   
+                                    <div id="footer-content"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div id="modal" class="modal modal-fixed-footer modal-custom">
+                        <div class="modal-content">
+                            <!-- Encabezado del modal -->
+                            <h5 class="modal-title">Datos adicionales</h5>
+                            <!-- Línea separadora -->
+                            <div class="divider"></div>
+                            <div class="modal-body">
+                                <!-- Contenido del modal en dos columnas -->
+                                <form style="margin-top: 90px;">
+                                    <div class="row">
+                                        <!-- Columna izquierda -->
+                                            <div class="static">
+                                                <div class="col s12 m12">
+                                                    <div class="textarea">
+                                                        <label for="descripcion">Ingrese Descripción del Daño / Pérdida</label>
+                                                        <textarea id="description" name="descripcion" class="materialize-text area custom-text area" style="border-color: #bec9bf; max-width: 100%; max-height: 100%; min-width: 100%;"></textarea>
+                                                    </div>
+                                                </div>
+                                            
+                                        <!-- Columna derecha para los botones de radio -->
+                                        <div class="col s13 m6">
+                                            <div style="text-align: center; margin-right: -370px;">
+                                                <label>Elige la opción</label>
+                                            </div>
+                                            <p>
+                                                <label>
+                                                    <input type="radio" name="tipoMovimiento" value="0" id="type" />
+                                                    <span>Daño</span>
+                                                </label>
+                                            </p>
+                                            <p style="text-align: right; margin-top: -40px; margin-right: -250px;">
+                                                <label>
+                                                    <input type="radio" style="position: relative;" name="tipoMovimiento" value="1" id="type" />
+                                                    <span style="position: relative;">Pérdida</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary modal-close"
+                                style="background-color: #198a2c; color: rgb(248, 245, 245);">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="../../assets/lib/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="../../assets/lib/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="../../assets/lib/node_modules/jquery/dist/jquery.js"></script>
+    <script src='../../assets/lib/node_modules/maxcdn_boostrappcdn_bootstrap3/maxcdn.bootstrapcdn.com_bootstrap_3.3.5_js_bootstrap.min.js'></script>
+    <script src='../../assets/lib/node_modules/ajaxAngular/ajax.googleapis.com_ajax_libs_angularjs_1.4.3_angular.min.js'></script>
+    <script src="../../js/inventario/navBar.js"></script>
+    <script src="../../js/loadData.js"></script>
+    <script src="../../js/inventario/registrarDanoPerdida.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+    </script>
+
+</body>
+
+</html>
+<script>
+    loadClassroom();
+    actualizarHoraYFecha();
+    loadClassroomDestination();
+</script>

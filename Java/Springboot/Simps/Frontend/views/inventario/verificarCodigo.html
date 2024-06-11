@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar codigo</title>
+    <link rel="stylesheet" href="../../assets/css/inventario/verificarCodigo.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/assets/lib/node_modules/material-icons/iconfont/material-icons.css">
+    <link rel="stylesheet" href="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.css">
+</head>
+
+<body>
+    <div class="registro-codigo">
+        <div class="form-container">
+            <h2>Insertar Código</h2>
+                <div class="form-group">
+                    <label for="codigo"></label>
+                    <input type="text" id="code" name="codigo" required placeholder="Inserte el código" autocomplete="off">
+                </div>
+                <button onclick="darAcceso()">
+                    Ingresar <i class='bx bx-send' style="font-size: 10px;"></i>
+                </button>
+        </div>
+    </div>
+    <script src="/assets/lib/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    
+    <script src="../../js/inventario/verificarCodigo.js"></script>
+</body>
+
+</html>

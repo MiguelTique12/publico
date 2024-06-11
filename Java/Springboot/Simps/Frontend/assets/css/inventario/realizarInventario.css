@@ -1,0 +1,225 @@
+.table > tbody > tr:hover {
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+  .centered {
+    text-align: center;
+  }
+
+  /* Aplica estilos para centrar el contenido en las celdas del cuerpo de la tabla */
+.table tbody td {
+  text-align: center; /* Centra horizontalmente */
+  vertical-align: middle; /* Centra verticalmente */
+}
+/* Aplica estilos para centrar el contenido en las celdas del cuerpo de la tabla */
+.table tbody td {
+  text-align: center; /* Centra horizontalmente */
+  vertical-align: middle; /* Centra verticalmente */
+}
+
+.table-header {
+  text-align: center;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bold-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 15px;
+  color: darkslategrey;
+}
+
+/* Aplica el estilo al botón */
+.btn.nuevo-registro,
+.nuevo-registro {
+  background-color: #364e7c;
+  border: none;
+  color: white;
+  display: flex; /* Utiliza flexbox para alinear elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+  justify-content: center; /* Centra horizontalmente los elementos */
+  transition: background-color 0.3s ease-in-out;
+  outline: none;
+}
+
+/* Agrega el estilo de hover y focus */
+.btn.nuevo-registro:hover,
+.btn.nuevo-registro:focus,
+.nuevo-registro:hover,
+.nuevo-registro:focus {
+  background-color: #253d63;
+  transition: background-color 0.3s;
+}
+
+
+/*Navbar*/
+
+.hoverable{
+  display:inline-block;
+  vertical-align: middle;
+  position:relative;
+  tranform: translateZ(0);
+  transition-duration: .3s;
+  transition-property:transform;
+}
+
+.hoverable:before{
+  position:absolute;
+  pointer-events: none;
+  z-index:-1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height:10px;
+  width:90%;
+  opacity:0;
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 90%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 90%);
+  /* W3C */
+  transition-duration: 0.3s;
+  transition-property: transform, opacity;
+}
+
+.hoverable:hover, .hoverable:active, .hoverable:focus{
+  transform: translateY(-5px);
+}
+.hoverable:hover:before, .hoverable:active:before, .hoverable:focus:before{
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+
+
+@keyframes bounce-animation {
+  16.65% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+
+  33.3% {
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+
+  49.95% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+
+  66.6% {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+
+  83.25% {
+    -webkit-transform: translateY(1px);
+    transform: translateY(1px);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.bounce {
+  animation-name: bounce-animation;
+  animation-duration: 2s;
+}
+
+
+
+/*everything below here is just setting up the page, so dont worry about it */
+
+
+@media (min-width: 768px) {
+  .navbar{
+    text-align: center !important;
+    float: none;
+  }
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  font-weight:600;
+  text-align:center !important;
+  color: rgb(255, 255, 255);
+}
+
+nav {
+  background: none !important;
+  text-transform:uppercase;
+  li {
+    margin-left: 3em;
+    margin-right: 3em;
+    a{
+      transition: .5s color ease-in-out;
+    }
+  }
+}
+
+.page-title {
+  opacity: .75 !important;
+}
+/* Centrar horizontalmente el contenido de la lista desordenada */
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Para centrar verticalmente también */
+}
+
+/* Estilos para los elementos de enlace */
+.navbar-nav a {
+  color: black;
+  text-align: center; /* Alinear el texto horizontalmente si es necesario */
+}
+
+.navbar-inverse {
+  border-color: #ffffff;
+}
+
+#workSpace {
+  width: 100%;
+  height: 600px;
+}
+
+.row .col.s12 {
+margin: -70px;
+}
+#datatable td, #datatable th {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+#datatable th {
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+body {
+  background: rgb(214, 214, 245);
+}
+
+.navbar{
+  margin-bottom: 0px;
+  position: absolute;
+  top: 70px;
+}
+.container-fluid{
+  background-color: white;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+html {
+  margin-top: 35px !important;
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}

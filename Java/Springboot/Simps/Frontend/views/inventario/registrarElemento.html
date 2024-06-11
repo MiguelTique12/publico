@@ -1,0 +1,202 @@
+<!-- en esta se puede aplicar lo de muchos en un solo registro -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Elemento</title>
+    <!-- Estilos de Materialize -->
+    <link rel="stylesheet" href="/assets/lib/node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/lib/node_modules/material-icons/iconfont/material-icons.css">
+
+    <!--SweetAlert2-->
+    <link rel="stylesheet" href="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.css">
+
+    <!-- Estilos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Estilos de DataTables y DataTables Buttons -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <!-- Tu estilo personalizado -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        #imagenMostrada {
+            width: 80px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="row datatable">
+        <div id="admin" class="col s12">
+            <div class="card material-table center-table">
+                <div class="table-header">
+                    <div class="table-title-and-button">
+                        <span class="table-title">Registro Elemento</span>
+                        <a href="#" id="export-pdf-button" class="btn btn-danger red darken-1 custom-pdf-button">
+                            <i class="fas fa-file-pdf"></i> Exportar a PDF
+                        </a>
+                        <a href="#" class="btn btn-info blue lighten-1 imprimir">
+                            <i class="fa fa-print"></i> Imprimir
+                        </a>
+                    </div>
+                    <div class="actions">
+                        <!-- Agrega el atributo 'data-bs-toggle' y 'data-bs-target' para activar el modal -->
+                        <a class="btn modal-trigger nuevo-registro" href="#modal">
+                            Insertar Nuevo Registro
+                            <i class="material-icons right fa-solid fa-plus fa-beat fa-2xs"></i>
+                        </a>
+                        <a href="#" class="search-toggle btn-flat nopadding"><i class="material-icons">search</i></a>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="datatable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Imagen</th>
+                                <th>Descripcion</th>
+                                <th>Marca</th>
+                                <th>Tipo de Elemento</th>
+                                <th>Estado</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8" id="datetime-footer"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal modal-fixed-footer modal-custom">
+        <div class="modal-content">
+            <!-- Encabezado del modal -->
+            <h5 class="modal-title">Registro Elemento</h5>
+            <!-- Línea separadora -->
+            <div class="divider"></div>
+            <div class="modal-body">
+                <!-- Contenido del modal en dos columnas -->
+                <form class="home-form">
+                    <div class="row">
+                        <!-- Columna izquierda -->
+                        <input type="hidden" name="id" id="id">
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input type="text" id="name" name="name" required placeholder="Nombre del Elemento"
+                                    autocomplete="given-name" class="validate" />
+                                <label for="name">Nombre</label>
+                            </div>
+                            <label for="roles">Imagen de Perfil</label>
+                            <div class="input-field">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>Imgen De Perfil</span>
+                                        <div id="fileInputWrapper">
+                                            <input type="file" id="formFile" accept="image/*"
+                                                onchange="mostrarImagen()">
+                                        </div>
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
+                                <div id="imagenSeleccionada" style="display: none;">
+                                    <img id="imagenMostrada" src="#" alt="Imagen seleccionada">
+                                </div>
+                                <div id="mensajeError" style="display: none; color: red;">
+                                    Este tipo de archivo no es válido.
+                                </div>
+                                <input type="textArea" id="formFileHidden" style="display: none;">
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="description" name="description" required
+                                    placeholder="Descripción del Elemento" autocomplete="off" class="validate" />
+                                <label for="description">Descripción</label>
+                            </div>
+                        </div>
+
+                        <!-- Columna derecha -->
+                        <div class="col s12 m6">
+                            <label for="brandId">Marca</label>
+                            <div class="input-field">
+                                <select id="brandId" name="brandId" class="browser-default">
+                                    <option value="" disabled selected>Selecciona Marca</option>
+                                </select>
+                            </div>
+                            <label for="typesElements">Tipo de Elemento</label>
+                            <div class="input-field">
+                                <select id="typesElements" name="typesElements" class="browser-default">
+                                    <option value="" disabled selected>Selecciona Tipo de Elemento</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" id="state" />
+                                        <span>Estado</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-close" onclick="clearData()"
+                style="background-color: #fff; color: black;">Cerrar</button>
+            <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" onclick="Add()"
+                style="background-color: #364e7c;"> <i class="fa-regular fa-floppy-disk"></i> Guardar Cambios</button>
+        </div>
+    </div>
+
+
+
+
+    <!-- Scripts de jQuery y DataTables -->
+    <script src="/assets/lib/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <!--SweetAlert2-->
+    <script src="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <!-- Scripts de DataTables Buttons -->
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/assets/lib/node_modules/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/assets/lib/node_modules/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.print.min.js"></script>
+
+    <!-- Scripts de Materialize -->
+    <script src="/assets/lib/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <!-- Tu script personalizado -->
+
+
+    <script src="/js/inventario/registrarElemento.js"></script>
+    <script src="/js/loadData.js"></script>
+    <!-- Inicializa el modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+
+
+    </script>
+
+</body>
+
+</html>
+<script>loadBrand();</script>
+<script>loadTypesElements();</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/asistencia/macarAsistencia.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="page-container">
+        <div class="alert alert-dismissible">
+            <h4 class="alert-heading">Registro de Asistencia por RFID</h4>
+            <p class="alert-yes">Por favor, acerque su tarjeta RFID para registrar su asistencia</p>
+            <img src="../../assets/img/asistencia/tarjetas-rfid-icancharge.jpg" alt="Descripción de la imagen" class="imagen-personalizada">
+
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="disabledInput" style="opacity: 0;"></label>
+            <input class="form-control" id="disabledInput" type="text" placeholder="Input aquí...">
+        </div>
+        <i id="fullscreenButton" class="fa-solid fa-expand fa-beat-fade fa-2xl"></i>
+    </div>
+    <script src="../../js/asistencia/marcarAsistencia.js"></script> 
+    <script src="../../assets/lib/node_modules/jquery/dist/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Marca</title>
+    <!-- Estilos de Materialize -->
+    <link rel="stylesheet" href="/assets/lib/node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/lib/node_modules/material-icons/iconfont/material-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+
+
+    <!--SweetAlert2-->
+    <link rel="stylesheet" href="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.css">
+
+    <!-- Estilos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Estilos de DataTables y DataTables Buttons -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <!-- Tu estilo personalizado -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="row datatable">
+        <div id="admin" class="col s12">
+            <div class="card material-table center-table">
+                <div class="table-header">
+                    <h4 class="table-title">Registro de Marca</h4>
+                    <div class="buttons" style="margin-left: 10px;">
+                        <a href="#" id="export-pdf-button" class="btn btn-danger red darken-1 custom-pdf-button">
+                            <i class="fas fa-file-pdf"></i> Exportar a PDF
+                        </a>
+                        <a href="#" class="btn btn-info blue lighten-1 imprimir">
+                            <i class="fa fa-print"></i> Imprimir
+                        </a>
+                    </div>
+                    <div class="actions">
+                        <!-- Agrega el atributo 'data-bs-toggle' y 'data-bs-target' para activar el modal -->
+                        <a class="btn modal-trigger nuevo-registro" href="#modal">
+                            Insertar Nuevo Registro
+                            <i class="material-icons right fa-solid fa-plus fa-beat fa-2xs"></i>
+                        </a>
+                        <a href="#" class="search-toggle btn-flat nopadding"><i class="material-icons">search</i></a>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="datatable" class="striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Marca</th>
+                                <th>Nit</th>
+                                <th>Estado</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" id="datetime-footer"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal modal-fixed-footer modal-custom" style="max-width: 60%; max-height: 50%;">
+        <div class="modal-content modal-border">
+            <!-- Encabezado del modal -->
+            <div class="modal-header">
+                <h4 class="modal-title">Registro Marca</h4>
+            </div>
+            <!-- Línea separadora -->
+            <div class="divider"></div>
+            <div class="modal-body">
+                <!-- Contenido del modal en dos columnas -->
+                <form class="home-form">
+                    <div class="row">
+                        <!-- Columna izquierda -->
+                        <input type="hidden" name="id" id="id">
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input type="text" id="name" name="name" required
+                                    placeholder="Ingrese la marca" autocomplete="given-name"
+                                    class="validate" />
+                                <label for="name">Marca</label>
+                            </div>
+                        </div>
+                        <!-- Columna derecha -->
+                        <div class="col s12 m6">
+                                <div class="input-field">
+                                    <input type="text" id="nit" name="nit" required
+                                        placeholder="Ingrese la cantidad de los Elementos" autocomplete="given-name"
+                                        class="validate" />
+                                    <label for="nit">Nit</label>
+                                </div>
+                            <br>
+                            <div class="input-field">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" id="state" />
+                                        <span>Estado</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-close" onclick="clearData()"
+            style="background-color: #fff; color: black;">Cerrar</button>
+        <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" onclick="Add()"
+            style="background-color: #364e7c;"> <i class="fa-regular fa-floppy-disk"></i> Guardar
+            Cambios</button>
+
+    </div>
+    </div>
+
+    <!-- Scripts de jQuery y DataTables -->
+    <script src="/assets/lib/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <!--SweetAlert2-->
+    <script src="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <!-- Scripts de DataTables Buttons -->
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/assets/lib/node_modules/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/assets/lib/node_modules/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.print.min.js"></script>
+
+
+    <!-- Scripts de Materialize -->
+    <script src="/assets/lib/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <!-- Tu script personalizado -->
+    <script src="../../js/comprobarSesion.js"></script>
+    <script src="/js/inventario/registrarMarca.js"></script>
+    <script src="/js/loadData.js"></script>
+    <!-- Inicializa el modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro De Profesor</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/assets/lib/node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/lib/node_modules/material-icons/iconfont/material-icons.css">
+    <link rel="stylesheet" href="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+    <div class="row datatable">
+        <div id="admin" class="col s12">
+            <div class="card material-table center-table">
+                <div class="table-header">
+                    <div class="table-title-and-button">
+                        <span class="table-title">Registro De Profesor</span>
+                        <a href="#" id="export-pdf-button" class="btn btn-danger red darken-1 custom-pdf-button">
+                            <i class="fas fa-file-pdf"></i> Exportar a PDF
+                        </a>
+                        <a href="#" class="btn btn-info blue lighten-1 imprimir">
+                            <i class="fa fa-print"></i> Imprimir
+                        </a>
+                    </div>
+                    <div class="actions">
+                        <a class="btn modal-trigger nuevo-registro" href="#modal">
+                            Insertar Nuevo Registro
+                            <i class="material-icons right fa-solid fa-plus fa-beat fa-2xs"></i>
+                        </a>
+                        <a href="#" class="search-toggle btn-flat nopadding"><i class="material-icons">search</i></a>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="datatable" class="striped highlight">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Fecha del Contrato</th>
+                                <th>Usuario</th>
+                                <th>Curso</th>
+                                <th>Estado</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" id="datetime-footer"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal modal-fixed-footer modal-custom">
+        <div class="modal-content modal-border">
+            <div class="modal-header">
+                <h5 class="modal-title">Registro De Profesor</h5>
+            </div>
+            <div class="divider"></div>
+            <div class="modal-body">
+                <form class="home-form">
+                    <div class="modal-body" style="margin-top: 10px;"> 
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input type="date" id="contractDate" name="fecha del contrato" required
+                                    placeholder="Ingrese Su nombre" autocomplete="given-name" class="validate" />
+                                <label for="fecha del contrato">Fecha del Contrato</label>
+                            </div>
+                        </div>
+                        <label for="Profesor">Usuario</label>
+                    <div class="col s10 m6">
+                        <select id="userId" name="user" class="browser-default">
+                        </select>
+                    </div>
+                    <div class="col s12 m6">
+                        <!-- Columna derecha -->
+                        <div class="col s12 m10">
+                            <label for="viewId">Cursos</label>
+                            <div>
+                                <select id="curseName" name="" class="browser-default">
+                                </select>
+                            </div>
+                            <label for="description">Cursos</label>
+                            <div class="input-field">
+                                <div id="views-container" contenteditable="false"
+                                    style="border: 1px solid #9e8e8e; min-height: 100px; padding: 5px;"></div>
+                                <div id="selected-views-container"></div>
+                            </div>
+                        </div>
+                           
+                            <div class="input-field">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" id="state" />
+                                        <span>Estado</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-close" onclick="clearData()"
+                style="background-color: #fff; color: black;">Cerrar</button>
+            <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" onclick="Add()"
+                style="background-color: #364e7c;"> <i class="fa-regular fa-floppy-disk"></i> Guardar
+                Cambios</button>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="/assets/lib/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/assets/lib/node_modules/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/assets/lib/node_modules/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/assets/lib/node_modules/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/assets/lib/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/js/parametrizacion/registroProfesor.js"></script>
+
+    
+    <script src="/js/loadData.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+    </script>
+    <script>
+        loadUsers();
+        loadCurses();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/asistencia/calendario.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="cal-container">
+    <h1>Calendario</h1>
+    <hr class="line-separator">
+    <div id="calendar"></div>
+  </div>
+  <!-- Estructura del modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="container">
+        <h1>Detalles de la Asistencia</h1>
+        <div class="line-separator"></div>
+        <div class="form-container">
+          <form>
+            <div class="form-group">
+              <label for="date">Fecha</label>
+              <input type="date" id="date" class="form-control" disabled>
+            </div>
+            <div class="form-group">
+              <label for="entryTime">Hora asistida</label>
+              <input type="time" id="entryTime" class="form-control" disabled>
+            </div>
+            <div class="form-group">
+              <label for="subject">Asignatura</label>
+              <input type="text" id="subject" class="form-control" disabled>
+            </div>
+            <div class="form-group">
+              <label for="description">Descripción</label>
+              <input type="text" id="description" class="form-control" disabled>
+            </div>
+            <label for="typeAssistance">Tipo de Asistencia</label>
+            <div class="input-field">
+              <select id="typeAssistance" name="typeAssistance" class="browser-default" disabled>
+                <option selected="" disabled hidden value="">--Tipo de asistencia--</option>
+                <option value="RFID">Tarjeta RFID</option>
+                <option value="">Huella - Work in process</option>
+                <option value="">Manual - Work in process</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 5px;">Aceptar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.js"></script>
+
+  <script src="../../assets/lib/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/js/asistencia/consultarAsistenciaCalendario.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+/* Agrega estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+h1 {
+    color: #333;
+}
+
+/* Estilos para los select */
+.select-container {
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para el resultado */
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Estilos para botones (opcional) */
+button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para el botón (hover) */
+button:hover {
+    background-color: #0056b3;
+}
+.container {
+    max-width: 600px;
+    margin: 100px auto; /* Ajusta el valor de margen superior según tus necesidades */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(35, 3, 117, 0.752);
+    text-align: center;
+}
+
+.select-container label,
+.select-container select {
+    text-align: center;
+}
+.label-bold {
+    font-weight: bold;
+}

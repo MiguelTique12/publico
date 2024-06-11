@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vista de Búsqueda con Tarjetas</title>
+    <link rel="stylesheet" href="/assets/css/asistencia/calendario.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!--SweetAlert2-->
+    <link rel="stylesheet" href="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.css">
+    <link rel="stylesheet" href="/assets/css/asistencia/columna.css">
+</head>
+
+<body>
+    <main class="container mt-4">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="asignatura">Asignatura:</label>
+                <select id="subject" class="form-control">
+                    <option selected="" selected disabled hidden value="">--Seleccione Una Asignatura--</option>
+                    <option value="Matemáticas">Matemáticas</option>
+                    <option value="Historia">Historia</option>
+                    <option value="Biología">Biología</option>
+                    <option value="Química">Química</option>
+                    <option value="Física">Física</option>
+                    <option value="Comunicación">Comunicación</option>
+                    <option value="Sociología">Sociología</option>
+                    <!-- Opciones de asignaturas cargadas dinámicamente desde el backend -->
+                </select>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-6" style="left: 46%; justify-content: center;">
+                <button id="buscar" class="btn btn-primary" onclick="consultarAsistencias();">Buscar</button>
+            </div>
+
+
+
+
+        </div>
+        <div class="row" id="tarjetas-container">
+            <!-- Las tarjetas se generarán aquí dinámicamente -->
+        </div>
+
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="container">
+                    <h1>Detalles de la Asistencia</h1>
+                    <div class="line-separator"></div>
+                    <div class="form-container">
+                        <form>
+                            <div class="form-group">
+                                <label for="date">Fecha</label>
+                                <input type="date" id="date" class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="entryTime">Hora asistida</label>
+                                <input type="time" id="entryTime" class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Asignatura</label>
+                                <input type="text" id="subjectId" class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Descripción</label>
+                                <input type="text" id="description" class="form-control" disabled>
+                            </div>
+                            <label for="typeAssistance">Tipo de Asistencia</label>
+                            <div class="input-field">
+                                <select id="typeAssistance" name="typeAssistance" class="browser-default" disabled>
+                                    <option selected="" disabled hidden value="">--Tipo de asistencia--</option>
+                                    <option value="RFID">Tarjeta RFID</option>
+                                    <option value="">Huella - Work in process</option>
+                                    <option value="">Manual - Work in process</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="margin-top: 5px;">Aceptar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!--SweetAlert2-->
+    <script src="/assets/lib/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="../../assets/lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Carga el script de Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/asistencia/consultarAsistenciaColumna.js"></script>
+</body>
+
+</html>

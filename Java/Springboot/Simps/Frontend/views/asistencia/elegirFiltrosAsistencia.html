@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista del Profesor</title>
+    <link rel="stylesheet" href="/assets/css/asistencia/elegirFiltros.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Consultar Asistencia Estudiante</h1>
+
+        <div class="select-container">
+            <label for="estudiante" class="label-bold">Grado</label>
+            <select id="gradeId">
+                
+            </select>
+        </div>
+
+        <div class="select-container">
+            <label for="curso" class="label-bold">Curso:</label>
+            <select id="curseId">
+                <option selected="" selected disabled hidden value="">--Seleccione Un Grado Primero--</option>  
+                <!-- Agrega más opciones de cursos -->
+            </select>
+        </div>
+
+        <div class="select-container">
+          <label for="asignatura" class="label-bold">Grado</label>
+            <select id="studentId">
+                <option selected="" selected disabled hidden value="">--Seleccione Un Curso Primero--</option>  
+                <!-- Agrega más opciones de asignaturas -->
+            </select>
+        </div>
+
+       
+            <button id="consultar-button" onclick="consultarAsistencia();">Consultar</button>
+            <!-- Aquí se mostrará el resultado seleccionado por el profesor -->
+        </div>
+    </div>
+    <script src="../../assets/lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../js/asistencia/elegirFiltros.js"></script>
+    <script src="../../js/loadData.js"></script>
+    <script>
+        loadGrades();
+    </script>
+</body>
+</html>
